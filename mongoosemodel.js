@@ -14,9 +14,26 @@ var userOne = new newUser({
   age: "20"
 });
 
+var userTwo = new newUser({
+  name: "Ela",
+  age: "16"
+});
+
 userOne.save(function(error) {
-  console.log("User One has been saved!");
+  console.log(`${userOne.name} has been saved!`);
   if (error) {
     console.error(error);
   }
+});
+
+userTwo.save(function(error) {
+  console.log(`${userTwo.name} has been saved in database ! `);
+  if (error) {
+    console.error(error);
+  }
+});
+
+newUser.find().distinct("name", function(error, name) {
+  // ids is an array of all ObjectIds
+  console.log(name);
 });
